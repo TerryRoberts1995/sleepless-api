@@ -24,4 +24,3 @@ initialize_routes(api)
 app.run()
 
 
-# This is a enviroment variable test
