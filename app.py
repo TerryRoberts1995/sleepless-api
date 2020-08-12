@@ -5,9 +5,12 @@ from flask_jwt_extended import JWTManager
 from database.db import initialize_db
 from flask_restful import Api
 from resources.routes import initialize_routes
+from os import environ
 
 app = Flask(__name__)
-app.config.from_envvar('ENV_FILE_LOCATION')
+
+
+app.config['ENV_FILE_LOCATION'] = environ.get('JWT_SECRET_KEY')
 api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
