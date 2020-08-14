@@ -1,5 +1,9 @@
-from flask import Response, request
-from flask_jwt_extended import create_access_token
+from flask import Response,redirect, request, redirect, make_response
+from flask_jwt_extended import (JWTManager, jwt_required,  
+                                 get_jwt_identity, create_access_token, 
+                                 create_refresh_token, set_access_cookies,
+                                 set_refresh_cookies
+                                 )
 from database.models import User
 from flask_restful import Resource
 import datetime
@@ -24,4 +28,10 @@ class LoginApi(Resource):
  
    expires = datetime.timedelta(days=7)
    access_token = create_access_token(identity=str(user.id), expires_delta=expires)
-   return {'token': access_token}, 200
+   refresh_token = create_refresh_token(identity=str(user.id))
+   resp = make_response({'login' : True})
+   set_access_cookies(resp, access_token)
+   set_refresh_cookies(resp, refresh_token)
+
+   return {"token" : access_token }, 200
+
