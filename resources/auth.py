@@ -33,5 +33,5 @@ class LoginApi(Resource):
    set_access_cookies(resp, access_token)
    set_refresh_cookies(resp, refresh_token)
 
-   return {"token" : access_token }, 200
+   return resp
 

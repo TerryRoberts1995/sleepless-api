@@ -10,15 +10,11 @@ class ImagesApi(Resource):
         images = Image.objects().to_json()
         return Response(images, mimetype="application/json", status=200)
 
-    @jwt_required
+    
     def post(self):
-        user_id = get_jwt_identity()
-        body = request.get_json()
-        user = User.objects.get(id=user_id)
-        image = Image(**body, added_by=user)
+        body = request.form
+        image = Image(**body)
         image.save()
-        user.update(push__images=image)
-        user.save()
         id = image.id
         return {'id': str(id)}, 200
     
@@ -27,17 +23,17 @@ class ImagesApi(Resource):
     #     return '', 200
 
 class ImageApi(Resource):
-    @jwt_required
+    
     def put(self, id):
-        user_id = get_jwt_identity()
-        image = Image.objects.get(id=id, added_by=user_id)
+        
+        image = Image.objects.get(id=id)
         body = request.get_json()
         Image.objects.get(id=id).update(**body)
         return '', 200
-    @jwt_required
+   
     def delete(self, id):
-        user_id = get_jwt_identity()
-        image = Image.objects.get(id=id, added_by=user_id)
+        
+        image = Image.objects.get(id=id)
         image.delete()
         return '', 200
 
