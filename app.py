@@ -19,7 +19,7 @@ app.config['JWT_SECRET_KEY'] = environ.get("JWT_SECRET_KEY")
 app.config['JWT_TOKEN_LOCATION'] = ('cookies', 'headers')
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
-# app.config['PROPAGATE_EXCEPTIONS'] = True
+app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://localhost/image-storage'
 }
