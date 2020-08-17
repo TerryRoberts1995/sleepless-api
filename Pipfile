@@ -15,6 +15,7 @@ python-dotenv = "*"
 flask-sqlalchemy = "*"
 flask-cors = "*"
 requests = "*"
+flask-gunicorn = "*"
 
 [requires]
 python_version = "3.8"
