@@ -13,6 +13,7 @@ class ImagesApi(Resource):
     
     def post(self):
         body = request.form
+        print(body)
         image = Image(**body)
         image.save()
         id = image.id
