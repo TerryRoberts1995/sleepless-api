@@ -15,6 +15,7 @@ api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['JWT_SECRET_KEY'] = environ.get("JWT_SECRET_KEY")
 app.config['JWT_TOKEN_LOCATION'] = ('cookies', 'headers')
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/api/'
