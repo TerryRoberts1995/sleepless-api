@@ -10,10 +10,10 @@ from flask_cors import CORS
 from os import environ
 
 app = Flask(__name__)
-CORS(app, supports_credentials = True)
 api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
+CORS(app, supports_credentials = True)
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['JWT_SECRET_KEY'] = environ.get("JWT_SECRET_KEY")
