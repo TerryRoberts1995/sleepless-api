@@ -10,7 +10,7 @@ from flask_cors import CORS
 from os import environ
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=False)
 api = Api(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
