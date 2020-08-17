@@ -23,6 +23,7 @@ app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://heroku_9kggfcsn:qlt00fpk712i53u667nrmmchbo@ds115866.mlab.com:15866/heroku_9kggfcsn'
 }
+app.config['MONGO_URI'] = 'mongodb://heroku_9kggfcsn:qlt00fpk712i53u667nrmmchbo@ds115866.mlab.com:15866/heroku_9kggfcsn'
 initialize_db(app)
 initialize_routes(api)
 
